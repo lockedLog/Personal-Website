@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import Home from "./pages/Home";
-import Research from "./pages/Research";
-import ArticlePage from "./pages/ArticlePage";
-import ProjectFolder from "./pages/ProjectFolder";
+import Home from "./pages/Home.jsx";
+import Research from "./pages/Research.jsx";
+import ArticlePage from "./pages/ArticlePage.jsx";
+import ProjectFolder from "./pages/ProjectFolder.jsx";
 import { articles, folders } from "./data/content";
 import "./App.css";
 

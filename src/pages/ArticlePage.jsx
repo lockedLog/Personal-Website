@@ -1,4 +1,4 @@
-import Nav from "../components/Nav";
+import Nav from "../components/Navigation.jsx";
 import { articles, folders } from "../data/content";
 
 export default function ArticlePage({ id, navigate }) {

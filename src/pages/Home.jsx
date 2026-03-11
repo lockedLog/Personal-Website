@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import Nav from "../components/Nav";
+import Nav from "../components/Navigation.jsx";
 
 function TechBackground() {
   const canvasRef = useRef(null);
