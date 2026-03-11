@@ -7,14 +7,66 @@ import { articles, folders } from "./data/content";
 import "./App.css";
 
 function App() {
-  const [page, setPage] = useState("home");
-  const [param, setParam] = useState(null);
+  const parseUrl = () => {
+    const path = window.location.pathname.replace(/\/$/, ""); 
+    if (!path || path === "/") return { page: "home", param: null };
+    if (path === "/research") return { page: "research", param: null };
+    
+    const parts = path.split('/').filter(Boolean);
+    if (parts[0] === "research") {
+      if (parts.length === 2) {
+        const isFolder = folders.some(f => f.id === parts[1]);
+        if (isFolder) return { page: "folder", param: parts[1] };
+        return { page: "article", param: parts[1] };
+      }
+      if (parts.length === 3) {
+        return { page: "article", param: parts[2] };
+      }
+    }
+    return { page: "home", param: null };
+  };
+
+  const initialState = parseUrl();
+  const [page, setPage] = useState(initialState.page);
+  const [param, setParam] = useState(initialState.param);
 
   const navigate = (to, p = null) => {
     setPage(to);
     setParam(p);
+    
+    let url = "/";
+    if (to === "research") {
+      url = "/research";
+    } else if (to === "folder") {
+      url = `/research/${p}`;
+    } else if (to === "article") {
+      let parentFolder = folders.find(f => f.entries.some(e => e.id === p));
+      if (parentFolder) {
+        url = `/research/${parentFolder.id}/${p}`;
+      } else {
+        url = `/research/${p}`;
+      }
+    }
+    window.history.pushState({ page: to, param: p }, "", url);
     window.scrollTo(0, 0);
   };
+
+  useEffect(() => {
+    window.history.replaceState({ page: initialState.page, param: initialState.param }, "", window.location.pathname);
+    
+    const handlePopState = (event) => {
+      if (event.state) {
+        setPage(event.state.page);
+        setParam(event.state.param);
+      } else {
+        const state = parseUrl();
+        setPage(state.page);
+        setParam(state.param);
+      }
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
 
   useEffect(() => {
     if (page === "home") {
