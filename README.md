@@ -1,1 +1,1 @@
-Personal website hosted via cloudflare pages. HTML, CSS, JS, and React (Vite)
+Migrated personal website to a more convenient markdown -> html (via Vite) system. New pushed md files automatically cause Cloudflare to rebuild. Uses HTML, CSS, JS.
