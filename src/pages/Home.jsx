@@ -173,7 +173,7 @@ export default function Home({ navigate }) {
           >
             LinkedIn
           </a>
-          <a className="home-link" href="mailto:logan@logank.net">
+          <a className="home-link" href="mailto:lkk5397@psu.edu">
             Email
           </a>
         </div>
