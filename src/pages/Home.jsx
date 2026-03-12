@@ -72,7 +72,7 @@ const LINES = [
   { id: 0, prompt: "logan@kali:~$", cmd: "whoami", delay: 500 },
   { id: 1, output: "logan", delay: 1200 },
   { id: 2, prompt: "logan@kali:~$", cmd: "cat interests.txt", delay: 1000 },
-  { id: 3, output: "security · automation · networking", delay: 1900 },
+  { id: 3, output: "blue team research · automation · networking", delay: 1900 },
 ];
 
 function Terminal() {
