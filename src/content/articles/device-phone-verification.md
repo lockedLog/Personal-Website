@@ -9,10 +9,9 @@ date: "March 23, 2026"
 <h3>The change:</h3>
 <p>The last type of verification that I recall going through for any sort of google accounts was a text message with a code, a traditional inbound OTP (one time password) as the last step to fully create your google account and join their services. You would enter your name, dob, desired email, maybe some recovery info, and then enter your phone number to receive a verification code to finish. However, now instead of the last step being to enter your number and receive the code to verify, the user themselves will receive a QR code to scan on their mobile device. The QR code served on a URI like this:</p>
 
-<p>
-https://accounts.google.com/devicephoneverification/initiate?request_id={requestID}&hl=en&pnv_flow=2&dsh=S{session/stateToken}:{expirationCode}&tid={someSession/messageValueToken}&flow=browser&idv_origin=1<br>
-sms://{short code number here}/&body=Send%20this%20message%20without%20editing.%20({verification code here})
-</p>
+<pre><code>https://accounts.google.com/devicephoneverification/initiate?request_id={requestID}&hl=en&pnv_flow=2&dsh=S{session/stateToken}:{expirationCode}&tid={someSession/messageValueToken}&flow=browser&idv_origin=1
+
+sms://{short code number here}/&body=Send%20this%20message%20without%20editing.%20({verification code here})</code></pre>
 
 <p>This then prompts the user to the SMS/Text app on their device where the message is already ready to send, the button simply needs to be clicked. This is sent to a short code number, not a traditional one. These are common for large businesses to make use of when operating at scale.</p>
 
