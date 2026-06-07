@@ -10,7 +10,7 @@ function mapModules(modules) {
       ...mod.attributes,
       content: mod.html
     };
-  }).sort((a, b) => new Date(b.date) - new Date(a.date));
+  }).filter(a => !a.draft).sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
 export const articles = mapModules(articleModules);
@@ -20,7 +20,6 @@ const splunkEntries = mapModules(splunkModules);
 export const folders = [
   {
     id: "splunk-self-study",
-    icon: "⛊",
     title: "Splunk Self-Study",
     description: "Teaching myself the fundamentals of Splunk and SIEM use.",
     status: "active",
@@ -28,7 +27,6 @@ export const folders = [
   },
   {
     id: "ccna-prep",
-    icon: "⇄",
     title: "CCNA Preparation",
     description: "Currently studying networking fundamentals and Cisco systems to take the CCNA (200-301) exam.",
     status: "active",

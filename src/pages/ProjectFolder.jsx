@@ -9,8 +9,8 @@ export default function ProjectFolder({ id, navigate }) {
       <>
         <Nav navigate={navigate} />
         <main className="folder-page">
-          <button className="back-btn" onClick={() => navigate("research")}>← back</button>
-          <p>Folder not found.</p>
+          <button className="back-btn" onClick={() => navigate("research")}>← Back</button>
+          <p className="not-found">Project not found.</p>
         </main>
       </>
     );
@@ -21,48 +21,49 @@ export default function ProjectFolder({ id, navigate }) {
       <Nav navigate={navigate} />
       <main className="folder-page">
         <button className="back-btn" onClick={() => navigate("research")}>
-          ← back to research
+          ← Back to writing
         </button>
 
-        <div className="page-eyebrow">// active project</div>
-        <h1 className="page-title">
-          {folder.icon} {folder.title}
-        </h1>
-        <p className="page-subtitle">{folder.description}</p>
+        <header className="page-header">
+          <h1 className="page-title">{folder.title}</h1>
+          <p className="page-subtitle">{folder.description}</p>
+        </header>
 
         <div className="folder-entries">
           {folder.entries.length === 0 ? (
-            <p style={{ color: "var(--muted)", fontSize: "0.85rem", fontFamily: "Fira Code, monospace", marginTop: "1rem" }}>
-              no entries yet
-            </p>
+            <p className="empty-state">No entries yet.</p>
           ) : (
             folder.entries.map((entry, i) => (
               <div key={i} className="entry-card">
                 <div>
                   <div className="entry-title">
                     {entry.id ? (
-                      <span
+                      <button
+                        className="entry-link"
                         onClick={() => navigate("article", entry.id)}
-                        style={{ color: "var(--accent)", cursor: "pointer", textDecoration: "none" }}
                       >
-                        {entry.title} →
-                      </span>
+                        {entry.title}
+                      </button>
                     ) : entry.url ? (
-                      <a href={entry.url} target="_blank" rel="noreferrer" style={{color: 'var(--accent)', textDecoration: 'none'}}>
+                      <a href={entry.url} target="_blank" rel="noreferrer" className="entry-link">
                         {entry.title} ↗
                       </a>
                     ) : (
                       entry.title
                     )}
                   </div>
-                  {entry.note && <div className="entry-note">{entry.note}</div>}
+                  {entry.note && <p className="entry-note">{entry.note}</p>}
                 </div>
-                <div className="entry-date">{entry.date}</div>
+                <time className="entry-date">{entry.date}</time>
               </div>
             ))
           )}
         </div>
       </main>
+
+      <footer className="site-footer">
+        <span>© {new Date().getFullYear()} Logan Kraus</span>
+      </footer>
     </>
   );
 }

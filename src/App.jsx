@@ -8,10 +8,10 @@ import "./App.css";
 
 function App() {
   const parseUrl = () => {
-    const path = window.location.pathname.replace(/\/$/, ""); 
+    const path = window.location.pathname.replace(/\/$/, "");
     if (!path || path === "/") return { page: "home", param: null };
     if (path === "/research") return { page: "research", param: null };
-    
+
     const parts = path.split('/').filter(Boolean);
     if (parts[0] === "research") {
       if (parts.length === 2) {
@@ -33,7 +33,7 @@ function App() {
   const navigate = (to, p = null) => {
     setPage(to);
     setParam(p);
-    
+
     let url = "/";
     if (to === "research") {
       url = "/research";
@@ -53,7 +53,7 @@ function App() {
 
   useEffect(() => {
     window.history.replaceState({ page: initialState.page, param: initialState.param }, "", window.location.pathname);
-    
+
     const handlePopState = (event) => {
       if (event.state) {
         setPage(event.state.page);
@@ -70,21 +70,21 @@ function App() {
 
   useEffect(() => {
     if (page === "home") {
-      document.title = "Logan Kraus | Home";
+      document.title = "Logan Kraus";
     } else if (page === "research") {
-      document.title = "Logan Kraus | Research";
+      document.title = "Blog — Logan Kraus";
     } else if (page === "article") {
       const found =
         articles.find((a) => a.id === param) ||
         folders.flatMap((f) => f.entries).find((e) => e.id === param);
       document.title = found?.title
-        ? `Logan Kraus | ${found.title}`
-        : "Logan Kraus | Article";
+        ? `${found.title} — Logan Kraus`
+        : "Article — Logan Kraus";
     } else if (page === "folder") {
       const folder = folders.find((f) => f.id === param);
       document.title = folder?.title
-        ? `Logan Kraus | ${folder.title}`
-        : "Logan Kraus | Research";
+        ? `${folder.title} — Logan Kraus`
+        : "Projects — Logan Kraus";
     } else {
       document.title = "Logan Kraus";
     }
