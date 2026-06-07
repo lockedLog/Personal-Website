@@ -83,8 +83,8 @@ function App() {
     } else if (page === "folder") {
       const folder = folders.find((f) => f.id === param);
       document.title = folder?.title
-        ? `${folder.title} — Logan Kraus`
-        : "Projects — Logan Kraus";
+        ? `${folder.title} | Logan Kraus`
+        : "Projects | Logan Kraus";
     } else {
       document.title = "Logan Kraus";
     }
