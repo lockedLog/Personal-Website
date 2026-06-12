@@ -4,7 +4,7 @@ import { articles } from "../data/content";
 export default function Research({ navigate }) {
   return (
     <>
-      <Nav navigate={navigate} />
+      <Nav navigate={navigate} current="blog" />
       <main className="research-page">
         <header className="page-header">
           <h1 className="page-title">Blog</h1>

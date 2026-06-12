@@ -3,8 +3,9 @@ import Nav from "../components/Navigation.jsx";
 export default function Home({ navigate }) {
   return (
     <>
-      <Nav navigate={navigate} />
+      <Nav navigate={navigate} current="home" />
       <main className="home">
+        <div className="home-orb" aria-hidden="true"></div>
         <section className="hero">
           <img
             src="/sig1.png"
