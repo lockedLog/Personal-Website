@@ -17,7 +17,7 @@ export default function ArticlePage({ id, navigate }) {
   if (!article) {
     return (
       <>
-        <Nav navigate={navigate} />
+        <Nav navigate={navigate} current="blog" />
         <main className="article-page">
           <button className="back-btn" onClick={() => navigate("research")}>
             ← Back

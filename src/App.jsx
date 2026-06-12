@@ -72,14 +72,14 @@ function App() {
     if (page === "home") {
       document.title = "Logan Kraus";
     } else if (page === "research") {
-      document.title = "Blog — Logan Kraus";
+      document.title = "Blog | Logan Kraus";
     } else if (page === "article") {
       const found =
         articles.find((a) => a.id === param) ||
         folders.flatMap((f) => f.entries).find((e) => e.id === param);
       document.title = found?.title
-        ? `${found.title} — Logan Kraus`
-        : "Article — Logan Kraus";
+        ? `${found.title} | Logan Kraus`
+        : "Article | Logan Kraus";
     } else if (page === "folder") {
       const folder = folders.find((f) => f.id === param);
       document.title = folder?.title

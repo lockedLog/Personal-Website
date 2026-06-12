@@ -7,7 +7,7 @@ export default function ProjectFolder({ id, navigate }) {
   if (!folder) {
     return (
       <>
-        <Nav navigate={navigate} />
+        <Nav navigate={navigate} current="blog" />
         <main className="folder-page">
           <button className="back-btn" onClick={() => navigate("research")}>← Back</button>
           <p className="not-found">Project not found.</p>
