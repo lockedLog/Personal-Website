@@ -17,7 +17,7 @@ export default function Home({ navigate }) {
         <section className="home-intro">
           <p className="home-role">Cybersecurity · Penn State</p>
           <p className="home-bio">
-            Driven by curiosity and a passion for solving complex problems.
+            Solving problems since '04.
           </p>
         </section>
 
